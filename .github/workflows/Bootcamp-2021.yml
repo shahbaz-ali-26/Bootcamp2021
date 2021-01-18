@@ -1,0 +1,22 @@
+name: Bootcamp
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Installing Node
+      uses: actions/setup-node@v2-beta
+      with: 
+       node-version: 12
+    - name: Installing sruge
+      run: npm install --global surge
+    - name: Deploying sruge
+      run: srurge ./ Bootcamp2021-samle.surge.sh --token ${{ secrets.Danish}}
+
